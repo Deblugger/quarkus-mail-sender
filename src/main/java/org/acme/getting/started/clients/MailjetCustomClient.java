@@ -33,7 +33,7 @@ public class MailjetCustomClient {
     private String mailJetSecret;
     
     public void sendEmail(Mail mail) throws MailjetException, MailjetSocketTimeoutException {
-        logger.info("Sending email to " + mail.to + " with title \"" + mail.title + "\"");
+        logger.info("Sending email to " + mail.receiver + " with title \"" + mail.title + "\"");
         MailjetClient client;
         MailjetRequest request;
         client = new MailjetClient(mailJetUser, mailJetSecret, new ClientOptions("v3.1"));
@@ -45,8 +45,8 @@ public class MailjetCustomClient {
         .put("Name", fromName))
         .put(Emailv31.Message.TO, new JSONArray()
         .put(new JSONObject()
-        .put("Email", mail.to)
-        .put("Name", mail.to)))
+        .put("Email", mail.receiver)
+        .put("Name", mail.receiver)))
         .put(Emailv31.Message.SUBJECT, mail.title)
         .put(Emailv31.Message.TEXTPART, mail.body)
         .put(Emailv31.Message.HTMLPART, mail.body)));

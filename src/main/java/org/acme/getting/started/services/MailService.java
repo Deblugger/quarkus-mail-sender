@@ -27,7 +27,7 @@ public class MailService {
     }
 
     public void sendAndSaveEmail(Mail mail) {         
-        logger.info("Receiving mail to " + mail.to);
+        logger.info("Receiving mail to " + mail.receiver);
         try {
             if(sendingEnabled) { 
                 mailjetCustomClient.sendEmail(mail);

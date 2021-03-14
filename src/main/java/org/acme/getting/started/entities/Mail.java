@@ -9,12 +9,12 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
 public class Mail extends PanacheEntity {    
-    public String to;
+    public String receiver;
     public String title;
     public String body;
     public Instant date = Instant.now();
 
-    public static List<Mail> listByTo(String to) {
-        return list("to", to);
+    public static List<Mail> listByTo(String receiver) {
+        return list("receiver", receiver);
     }
 }
